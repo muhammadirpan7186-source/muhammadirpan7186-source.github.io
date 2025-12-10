@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis: KKA & Budaya Indonesia</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .question {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background-color: #e9ecef;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 10px;
+            border: 1px solid #c3e6cb;
+        }
+        .incorrect {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🇮🇩 Kuis KKA & Budaya Indonesia</h1>
+    <p style="text-align: center;">Jawablah pertanyaan tentang dampak teknologi terhadap budaya kita.</p>
+
+    <div id="quiz-container">
+        <!-- Soal akan di-generate oleh JavaScript di sini -->
+    </div>
+
+    <button onclick="hitungSkor()">Kirim Jawaban</button>
+
+    <div id="result">
+        <h2>Skor Anda: <span id="score">0</span> / 100</h2>
+        <p id="feedback"></p>
+    </div>
+
+    <script>
+        // Data soal langsung dimasukkan ke dalam variabel JavaScript
+        const bankSoal = [
+            {
+                "tanya": "Bagaimana kecerdasan buatan (AI) dapat membantu melestarikan Bahasa Daerah yang hampir punah?",
+                "opsi": [
+                    "Dengan menghapus semua bahasa daerah dari internet",
+                    "Membuat sistem penerjemah otomatis dan dokumentasi digital bahasa daerah",
+                    "Mengganti bahasa daerah dengan bahasa pemrograman",
+                    "Melarang penggunaan bahasa daerah di media sosial"
+                ],
+                "kunci": 1
+            },
+            {
+                "tanya": "Batik motif baru bisa diciptakan menggunakan algoritma komputer (Generative Art). Sikap yang tepat terhadap inovasi ini adalah...",
+                "opsi": [
+                    "Menolaknya karena bukan buatan tangan manusia sama sekali",
+                    "Menerimanya sebagai alat bantu kreativitas tanpa melupakan makna filosofis batik",
+                    "Mengganti semua pengrajin batik dengan robot",
+                    "Mengklaim bahwa batik tulis manual sudah tidak berguna"
+                ],
+                "kunci": 1
+            },
+            {
+                "tanya": "Di media sosial, sering muncul 'Trend Asing' yang tidak sesuai budaya kita. Bagaimana peran algoritma 'Rekomendasi' dalam hal ini?",
+                "opsi": [
+                    "Algoritma selalu memberikan konten positif saja",
+                    "Algoritma cenderung menyebarkan konten viral tanpa memfilter nilai moral/budaya",
+                    "Algoritma secara otomatis menghapus budaya asing",
+                    "Algoritma tidak berpengaruh apa-apa"
+                ],
+                "kunci": 1
+            },
+            {
+                "tanya": "Sebagai siswa yang berbudaya, apa yang harus dilakukan jika melihat konten 'Deepfake' (Video palsu AI) yang menghina pahlawan nasional?",
+                "opsi": [
+                    "Ikut menyebarkannya agar viral",
+                    "Tertawa karena dianggap lucu",
+                    "Melaporkan (Report) konten tersebut dan tidak menyebarkannya",
+                    "Membuat video balasan dengan menghina balik"
+                ],
+                "kunci": 2
+            },
+            {
+                "tanya": "Teknologi Virtual Reality (VR) dapat digunakan untuk mempromosikan pariwisata Indonesia, contohnya...",
+                "opsi": [
+                    "Tur virtual keliling Candi Borobudur untuk orang di luar negeri",
+                    "Mengganti bangunan candi asli dengan gambar digital",
+                    "Membuat candi palsu di negara lain",
+                    "Melarang turis datang langsung ke Indonesia"
+                ],
+                "kunci": 0
+            },
+            {
+                "tanya": "Apa dampak negatif jika kita tidak memiliki 'Critical Thinking' saat menggunakan AI (Chatbot)?",
+                "opsi": [
+                    "Kita menjadi lebih pintar dari AI",
+                    "Kita bisa kehilangan jati diri bangsa karena menelan mentah-mentah informasi bias dari AI",
+                    "Budaya Indonesia akan semakin terkenal",
+                    "Tidak ada dampak negatif"
+                ],
+                "kunci": 1
+            },
+            {
+                "tanya": "Aplikasi gamelan digital di smartphone berguna untuk...",
+                "opsi": [
+                    "Menggantikan alat musik gamelan asli selamanya",
+                    "Membuat generasi muda malas belajar musik",
+                    "Memudahkan pengenalan bunyi gamelan kepada generasi muda secara praktis",
+                    "Merusak standar nada gamelan asli"
+                ],
+                "kunci": 2
+            },
+            {
+                "tanya": "Dalam Sila ke-2 Pancasila (Kemanusiaan), bagaimana seharusnya kita bersikap di dunia koding/maya?",
+                "opsi": [
+                    "Bebas berkomentar kasar karena tidak bertatap muka",
+                    "Menjaga adab, sopan santun, dan tidak melakukan cyberbullying",
+                    "Menggunakan bot untuk menyerang akun orang lain",
+                    "Mencuri data orang lain demi keuntungan pribadi"
+                ],
+                "kunci": 1
+            },
+            {
+                "tanya": "Algoritma E-Commerce sering memprioritaskan barang impor murah. Apa tantangan bagi UMKM (Pengrajin) lokal?",
+                "opsi": [
+                    "Tidak perlu berjualan online",
+                    "Harus belajar 'Digital Marketing' agar produk budaya lokal bisa bersaing dengan algoritma",
+                    "Pasrah saja karena teknologi tidak bisa dilawan",
+                    "Meminta pemerintah menutup internet"
+                ],
+                "kunci": 1
+            },
+            {
+                "tanya": "Inti dari 'Kecakapan Digital' yang berbudaya adalah...",
+                "opsi": [
+                    "Mampu koding tapi tidak peduli etika",
+                    "Hanya bisa main game seharian",
+                    "Mampu memanfaatkan teknologi untuk kemajuan bangsa dengan tetap memegang teguh nilai Pancasila",
+                    "Menolak semua teknologi baru demi menjaga tradisi lama"
+                ],
+                "kunci": 2
+            }
+        ];
+
+        const container = document.getElementById('quiz-container');
+
+        // Fungsi untuk merender soal ke HTML
+        function renderSoal() {
+            bankSoal.forEach((soal, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                let opsiHTML = '';
+                soal.opsi.forEach((pilihan, i) => {
+                    opsiHTML += `
+                        <label>
+                            <input type="radio" name="soal${index}" value="${i}">
+                            ${pilihan}
+                        </label>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="question">${index + 1}. ${soal.tanya}</div>
+                    <div class="options">${opsiHTML}</div>
+                    <div id="feedback-${index}" class="incorrect"></div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Fungsi Hitung Skor
+        function hitungSkor() {
+            let skor = 0;
+            let belumDijawab = false;
+
+            bankSoal.forEach((soal, index) => {
+                const feedbackEl = document.getElementById(`feedback-${index}`);
+                const inputs = document.getElementsByName(`soal${index}`);
+                let dijawab = false;
+                let jawabanUser = -1;
+
+                for (let input of inputs) {
+                    if (input.checked) {
+                        jawabanUser = parseInt(input.value);
+                        dijawab = true;
+                    }
+                    // Matikan input setelah submit agar tidak bisa diganti
+                    input.disabled = true;
+                }
+
+                if (jawabanUser === soal.kunci) {
+                    skor += 10;
+                    feedbackEl.style.display = "none";
+                } else {
+                    feedbackEl.style.display = "block";
+                    feedbackEl.innerHTML = `❌ <b>Salah.</b> Jawaban yang benar adalah: <br><i>${soal.opsi[soal.kunci]}</i>`;
+                }
+            });
+
+            // Tampilkan Hasil
+            const resultDiv = document.getElementById('result');
+            const scoreSpan = document.getElementById('score');
+            const feedbackText = document.getElementById('feedback');
+            
+            resultDiv.style.display = 'block';
+            scoreSpan.innerText = skor;
+            
+            if (skor >= 80) {
+                feedbackText.innerText = "🎉 Luar Biasa! Kamu calon programmer hebat!";
+                resultDiv.style.backgroundColor = "#d4edda";
+                resultDiv.style.color = "#155724";
+            } else if (skor >= 50) {
+                feedbackText.innerText = "👍 Bagus! Teruslah belajar lagi.";
+                resultDiv.style.backgroundColor = "#fff3cd";
+                resultDiv.style.color = "#856404";
+            } else {
+                feedbackText.innerText = "📚 Jangan menyerah, ayo baca materi lagi!";
+                resultDiv.style.backgroundColor = "#f8d7da";
+                resultDiv.style.color = "#721c24";
+            }
+
+            // Scroll otomatis ke bagian hasil
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Jalankan render saat halaman dimuat
+        renderSoal();
+    </script>
+</body>
+</html>
