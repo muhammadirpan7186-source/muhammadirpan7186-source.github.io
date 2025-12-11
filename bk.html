@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berpikir Komputasional (BK): Konsep Dasar & Aplikasi</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai standar */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            scroll-behavior: smooth;
+        }
+        .card-component {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: default; /* Change cursor back to default since it's not interactive anymore */
+            border-bottom: 5px solid #10b981; /* Default teal border */
+        }
+        .card-component:hover {
+            transform: none; /* Disable lift effect */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .icon-bk {
+            color: #10b981; /* Teal-500 for BK theme */
+        }
+        /* Styling untuk contoh praktis */
+        .example-box {
+            background-color: #e0f2f1; /* Teal-100 */
+            border-left: 5px solid #0d9488;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navbar Sederhana -->
+    <header class="bg-gray-800 shadow-xl sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-white flex items-center">
+                <span class="mr-2 icon-bk text-4xl">🧠</span> Berpikir Komputasional (BK)
+            </h1>
+            <nav class="hidden md:block">
+                <a href="#komponen" class="text-white hover:text-teal-300 transition duration-300 mx-3">4 Komponen</a>
+                <a href="#aplikasi" class="text-white hover:text-teal-300 transition duration-300 mx-3">Aplikasi KKA</a>
+                <a href="#relevansi" class="text-white hover:text-teal-300 transition duration-300 mx-3">Relevansi Siswa</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section: Definisi BK -->
+        <section class="bg-teal-600 text-white py-20 md:py-32 rounded-b-3xl shadow-2xl">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Pola Pikir Era Digital</h2>
+                    <p class="text-xl md:text-2xl font-light mb-8 opacity-90">
+                        Berpikir komputasional adalah kemampuan berpikir secara sistematis, terstruktur, dan logis dalam memecahkan masalah.
+                    </p>
+                    <p class="text-lg font-medium italic opacity-90">
+                        Ini adalah fondasi utama dalam pembelajaran Koding dan Kecerdasan Artificial (KA).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 1: 4 Komponen Utama BK -->
+        <section id="komponen" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-teal-700">Empat Pilar Berpikir Komputasional</h3>
+                <p class="text-center text-lg max-w-3xl mx-auto mb-10 text-gray-600">Keempat komponen ini saling berkaitan dan membentuk satu kesatuan cara berpikir yang efektif dalam memecahkan masalah kompleks.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Card 1: Decomposition (Dekomposisi) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-teal-500">
+                        <div class="text-4xl icon-bk mb-4">🧩</div>
+                        <h4 class="text-xl font-bold mb-3 text-teal-800">1. Dekomposisi</h4>
+                        <p class="text-gray-600">Memecah masalah besar dan kompleks menjadi bagian-bagian kecil yang lebih mudah ditangani dan diselesaikan satu per satu.</p>
+                        <div class="example-box">
+                            Skenario: Membuat Rencana Liburan. <br>Dekompisisi: Bagi menjadi 1. Pemilihan Destinasi, 2. Anggaran Biaya, 3. Jadwal Transportasi.
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Pattern Recognition (Pengenalan Pola) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-teal-500">
+                        <div class="text-4xl icon-bk mb-4">🔍</div>
+                        <h4 class="text-xl font-bold mb-3 text-teal-800">2. Pengenalan Pola</h4>
+                        <p class="text-gray-600">Mengidentifikasi kesamaan, keteraturan, atau tren yang dapat digunakan untuk menyederhanakan penyelesaian masalah.</p>
+                        <div class="example-box">
+                            Skenario: Memperbaiki *bug* pada 5 program. <br>Pola: Jika 4 program *crash* karena kesalahan *loop*, kemungkinan program ke-5 juga memiliki masalah *loop* yang sama.
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Abstraction (Abstraksi) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-teal-500">
+                        <div class="text-4xl icon-bk mb-4">💡</div>
+                        <h4 class="text-xl font-bold mb-3 text-teal-800">3. Abstraksi</h4>
+                        <p class="text-gray-600">Fokus pada informasi yang penting dan relevan, sambil mengabaikan detail yang tidak dibutuhkan untuk solusi.</p>
+                        <div class="example-box">
+                            Skenario: Membuat model simulasi cuaca. <br>Abstraksi: Fokus hanya pada suhu, kelembaban, dan tekanan udara. Abaikan warna langit atau jenis awan.
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Algorithmic Thinking (Berpikir Algoritmik) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-teal-500">
+                        <div class="text-4xl icon-bk mb-4">⚙️</div>
+                        <h4 class="text-xl font-bold mb-3 text-teal-800">4. Berpikir Algoritmik</h4>
+                        <p class="text-gray-600">Menyusun langkah-langkah penyelesaian masalah secara sistematis, berurutan, dan logis yang dapat diikuti oleh komputer atau manusia.</p>
+                        <div class="example-box">
+                            Skenario: Menemukan buku di perpustakaan. <br>Algoritma: 1. Pergi ke indeks, 2. Cari kategori, 3. Cari nomor rak, 4. Ambil buku.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 2: Aplikasi dalam Koding dan KA -->
+        <section id="aplikasi" class="py-16 md:py-24 bg-teal-50">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-teal-700">Aplikasi BK dalam Koding dan Kecerdasan Artificial</h3>
+
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <!-- Column 1: Koding -->
+                    <div class="w-full lg:w-1/2 p-6 bg-white rounded-2xl shadow-xl border-l-8 border-blue-500">
+                        <h4 class="text-2xl font-bold text-blue-700 mb-4 flex items-center">
+                            <span class="mr-3 text-3xl">💻</span> Penerapan dalam Koding
+                        </h4>
+                        <p class="mb-4 text-gray-600">BK menjadi fondasi untuk menyusun instruksi yang tepat agar komputer dapat menjalankan program sesuai tujuan.</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>**Membuat Fungsi:** Menerapkan dekomposisi untuk memecah tugas besar program menjadi fungsi atau modul kecil.</li>
+                            <li>**Logika Program:** Merancang algoritma untuk membangun logika percabangan, perulangan, atau fungsi yang eksplisit.</li>
+                            <li>**Debugging:** Siswa dilatih mengevaluasi kesalahan, merevisi program, dan memperbaiki hasil secara bertahap.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Kecerdasan Artificial (KA) -->
+                    <div class="w-full lg:w-1/2 p-6 bg-white rounded-2xl shadow-xl border-l-8 border-green-500">
+                        <h4 class="text-2xl font-bold text-green-700 mb-4 flex items-center">
+                            <span class="mr-3 text-3xl">🤖</span> Penerapan dalam Kecerdasan Artificial
+                        </h4>
+                        <p class="mb-4 text-gray-600">BK membantu siswa memilih data yang relevan dan menentukan model pemecahan masalah yang sesuai untuk sistem KA yang cerdas.</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>**Analisis Data:** Mengidentifikasi pola (Pattern Recognition) untuk melatih komputer belajar dari data gambar, teks, atau suara (misalnya, membuat fitur rekomendasi).</li>
+                            <li>**Pemilihan Fitur:** Menggunakan abstraksi untuk memilih informasi data yang paling penting dalam dataset, mengabaikan detail yang tidak relevan.</li>
+                            <li>**Pemahaman Logika:** Membantu siswa memahami logika di balik teknologi yang mereka gunakan setiap hari, seperti chatbot atau filter kamera.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 3: Relevansi untuk Siswa -->
+        <section id="relevansi" class="py-16 md:py-24 bg-white border-t-8 border-yellow-400">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-teal-700">Relevansi Berpikir Komputasional bagi Siswa</h3>
+                
+                <div class="bg-yellow-50 p-8 rounded-xl shadow-lg border-l-8 border-yellow-600 space-y-4">
+                    <div class="flex items-start">
+                        <span class="text-3xl text-yellow-700 mr-4">🎯</span>
+                        <div>
+                            <p class="font-bold text-lg text-yellow-800">Pola Pikir Metodis dan Tekun</p>
+                            <p class="text-gray-700">Siswa dilatih menghadapi masalah secara metodis, tidak mudah menyerah, dan terbiasa mencoba berbagai alternatif solusi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <span class="text-3xl text-yellow-700 mr-4">⚖️</span>
+                        <div>
+                            <p class="font-bold text-lg text-yellow-800">Literasi Digital dan Kritis</p>
+                            <p class="text-gray-700">BK membantu siswa memahami batasan dan potensi dampak KA terhadap kehidupan sosial dan budaya, sehingga mampu bersikap kritis dan bertanggung jawab.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <span class="text-3xl text-yellow-700 mr-4">🚀</span>
+                        <div>
+                            <p class="font-bold text-lg text-yellow-800">Kesiapan Abad 21</p>
+                            <p class="text-gray-700">Materi ini memberikan bekal bagi siswa untuk beradaptasi dengan perkembangan teknologi yang semakin cepat dan mendorong mereka menjadi inovator.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="text-xl font-bold mb-3">Bina Talenta Indonesia</h4>
+            <p class="text-sm text-gray-400">Dengan menguasai pola pikir ini, siswa tidak hanya memperoleh kemampuan membuat program, tetapi juga belajar memecahkan masalah secara kreatif.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript is no longer needed since interactivity (quiz/LKPD) is removed. Keeping only a minimal script tag if needed for future features. -->
+    <script>
+        // Script is now minimal, no complex logic needed
+    </script>
+</body>
+</html>
