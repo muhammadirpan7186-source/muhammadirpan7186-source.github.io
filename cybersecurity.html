@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keamanan Siber (Cyber Security): Konsep & Aplikasi</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai standar */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            scroll-behavior: smooth;
+        }
+        /* Mengubah skema warna utama menjadi biru gelap (Navy/Blue) untuk tema keamanan */
+        .primary-color {
+            background-color: #1e40af; /* Blue-700 */
+        }
+        .text-primary {
+            color: #1e40af; /* Blue-700 */
+        }
+        .border-primary {
+            border-bottom: 5px solid #3b82f6; /* Blue-500 border */
+        }
+        .card-component {
+            transition: box-shadow 0.3s;
+            cursor: default;
+            border-bottom: 5px solid #3b82f6; /* Blue border */
+        }
+        .card-component:hover {
+            transform: none;
+            box-shadow: 0 8px 15px -3px rgba(30, 64, 175, 0.2); /* Shadow with blue tint */
+        }
+        .icon-security {
+            color: #3b82f6; /* Blue-500 for security theme */
+        }
+        /* Styling untuk contoh praktis */
+        .example-box {
+            background-color: #eff6ff; /* Blue-50 */
+            border-left: 5px solid #2563eb; /* Blue-600 */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        /* Warna untuk Ancaman/Risiko */
+        .warning-color {
+            color: #ef4444; /* Red-500 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navbar Sederhana -->
+    <header class="bg-gray-800 shadow-xl sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-white flex items-center">
+                <span class="mr-2 icon-security text-4xl">🔒</span> Keamanan Siber
+            </h1>
+            <nav class="hidden md:block">
+                <a href="#konsep" class="text-white hover:text-blue-300 transition duration-300 mx-3">Konsep Dasar</a>
+                <a href="#ancaman" class="text-white hover:text-blue-300 transition duration-300 mx-3">Ancaman Digital</a>
+                <a href="#etika" class="text-white hover:text-blue-300 transition duration-300 mx-3">Etika & Tanggung Jawab</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section: Definisi Cyber Security -->
+        <section class="primary-color text-white py-20 md:py-32 rounded-b-3xl shadow-2xl">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Membangun Benteng Digital</h2>
+                    <p class="text-xl md:text-2xl font-light mb-8 opacity-90">
+                        Melindungi perangkat, data, jaringan, dan sistem digital dari serangan, pencurian, atau penyalahgunaan.
+                    </p>
+                    <p class="text-lg font-medium italic opacity-90">
+                        Fondasi penting dalam pembelajaran Koding dan Kecerdasan Artificial (KA).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 1: 4 Konsep Utama Keamanan Siber -->
+        <section id="konsep" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-primary">Pilar Kunci Keamanan Siber</h3>
+                <p class="text-center text-lg max-w-3xl mx-auto mb-10 text-gray-600">Pemahaman konsep dasar ini memastikan sistem yang kita bangun aman, utuh, dan selalu tersedia (CIA Triad).</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Card 1: Confidentiality (Kerahasiaan) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-blue-500">
+                        <div class="text-4xl icon-security mb-4">🔑</div>
+                        <h4 class="text-xl font-bold mb-3 text-primary">1. Kerahasiaan (Confidentiality)</h4>
+                        <p class="text-gray-600">Memastikan data hanya dapat diakses oleh pihak yang berwenang. Ini melibatkan enkripsi dan manajemen otentikasi yang ketat.</p>
+                        <div class="example-box">
+                            Penerapan: Penggunaan kata sandi yang kuat dan menyimpan data sensitif dalam bentuk terenkripsi.
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Integrity (Integritas) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-blue-500">
+                        <div class="text-4xl icon-security mb-4">✔️</div>
+                        <h4 class="text-xl font-bold mb-3 text-primary">2. Integritas (Integrity)</h4>
+                        <p class="text-gray-600">Memastikan bahwa data tidak dapat dimodifikasi, diubah, atau dirusak oleh pihak yang tidak sah selama proses transmisi atau penyimpanan.</p>
+                        <div class="example-box">
+                            Penerapan: Menggunakan *checksum* atau *hashing* untuk memverifikasi bahwa data yang diterima sama dengan data yang dikirim.
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Availability (Ketersediaan) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-blue-500">
+                        <div class="text-4xl icon-security mb-4"> uptime </div>
+                        <h4 class="text-xl font-bold mb-3 text-primary">3. Ketersediaan (Availability)</h4>
+                        <p class="text-gray-600">Memastikan bahwa sistem dan data dapat diakses oleh pengguna yang sah kapan pun mereka membutuhkannya.</p>
+                        <div class="example-box">
+                            Penerapan: Melakukan *backup* data rutin dan melindungi sistem dari serangan yang bertujuan melumpuhkan layanan (seperti DDoS).
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Etika Digital (Responsibility) -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-blue-500">
+                        <div class="text-4xl icon-security mb-4">⚖️</div>
+                        <h4 class="text-xl font-bold mb-3 text-primary">4. Etika Digital & Hukum</h4>
+                        <p class="text-gray-600">Sikap dan tanggung jawab moral untuk tidak menyalahgunakan teknologi atau data orang lain, serta mematuhi peraturan digital yang berlaku.</p>
+                        <div class="example-box">
+                            Penerapan: Tidak meretas sistem, tidak menggunakan AI untuk membuat konten penipuan (deepfake), dan menghargai privasi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 2: Aplikasi dalam Koding dan KA -->
+        <section id="ancaman" class="py-16 md:py-24 bg-blue-50">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-primary">Ancaman dan Penerapan dalam Koding & KA</h3>
+
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <!-- Column 1: Koding Aman -->
+                    <div class="w-full lg:w-1/2 p-6 bg-white rounded-2xl shadow-xl border-l-8 border-yellow-500">
+                        <h4 class="text-2xl font-bold text-yellow-700 mb-4 flex items-center">
+                            <span class="mr-3 text-3xl">💻</span> Koding Aman (*Secure Coding*)
+                        </h4>
+                        <p class="mb-4 text-gray-600">Siswa belajar menghindari celah keamanan sejak awal penulisan kode. Aplikasi yang aman adalah aplikasi yang dapat dipercaya.</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>**Validasi Input:** Selalu memeriksa input pengguna untuk mencegah serangan seperti *SQL Injection* atau *Cross-Site Scripting* (XSS).</li>
+                            <li>**Penggunaan Enkripsi:** Menyimpan data sensitif (seperti kata sandi) dengan dienkripsi, bukan teks biasa.</li>
+                            <li>**Prinsip *Least Privilege*:** Memberikan hak akses minimum yang diperlukan aplikasi atau pengguna untuk menjalankan fungsinya.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Keamanan Kecerdasan Artificial (KA) -->
+                    <div class="w-full lg:w-1/2 p-6 bg-white rounded-2xl shadow-xl border-l-8 border-red-500">
+                        <h4 class="text-2xl font-bold warning-color mb-4 flex items-center">
+                            <span class="mr-3 text-3xl">🤖</span> Risiko & Keamanan AI
+                        </h4>
+                        <p class="mb-4 text-gray-600">Sistem KA memproses data besar, yang berpotensi menjadi target serangan manipulasi data dan kebocoran informasi.</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>**Manipulasi Data:** Model AI dapat diserang dengan data yang salah (*Data Poisoning*), memengaruhi integritas hasilnya.</li>
+                            <li>**Kebutuhan Privasi:** Memahami bagaimana data pribadi dikumpulkan, diproses, dan disimpan untuk mencegah *data breach*.</li>
+                            <li>**Ancaman Berbasis AI:** Mengenali risiko *deepfake* atau *phishing* canggih yang dibuat dengan teknologi KA.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 3: Relevansi untuk Siswa -->
+        <section id="relevansi" class="py-16 md:py-24 bg-white border-t-8 border-primary">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-primary">Menjadi Warga Digital yang Bertanggung Jawab</h3>
+                
+                <div class="bg-blue-50 p-8 rounded-xl shadow-lg border-l-8 border-blue-600 space-y-4">
+                    <div class="flex items-start">
+                        <span class="text-3xl text-blue-700 mr-4">🛡️</span>
+                        <div>
+                            <p class="font-bold text-lg text-blue-800">Mengenal Ancaman Sejak Dini</p>
+                            <p class="text-gray-700">Siswa mampu mengidentifikasi berbagai jenis serangan siber (phishing, social engineering, DDoS) dan mengembangkan kebiasaan pengamanan diri.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <span class="text-3xl text-blue-700 mr-4">🎓</span>
+                        <div>
+                            <p class="font-bold text-lg text-blue-800">Pembentukan Etika Digital</p>
+                            <p class="text-gray-700">Menanamkan nilai integritas dan kehati-hatian, memastikan siswa memanfaatkan teknologi untuk tujuan positif dan etis.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <span class="text-3xl text-blue-700 mr-4">🌐</span>
+                        <div>
+                            <p class="font-bold text-lg text-blue-800">Literasi Digital yang Utuh</p>
+                            <p class="text-gray-700">Siswa tidak hanya menjadi pengguna, tetapi juga pelindung aset digital. Inovasi teknologi harus selalu diiringi dengan keamanan yang kuat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="text-xl font-bold mb-3">Bina Talenta Indonesia</h4>
+            <p class="text-sm text-gray-400">Pembelajaran cyber security menumbuhkan kesadaran bahwa kecerdasan harus selalu dibarengi etika.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Minimal script needed
+    </script>
+</body>
+</html>
