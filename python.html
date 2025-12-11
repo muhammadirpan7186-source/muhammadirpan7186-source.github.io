@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python: Gerbang Menuju Dunia Digital</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai standar */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            scroll-behavior: smooth;
+        }
+        .code-box {
+            background-color: #282c34; /* Dark background like VS Code */
+            color: #abb2bf;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            line-height: 1.4;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .code-box .comment {
+            color: #5c6370; /* Gray for comments */
+        }
+        .code-box .keyword {
+            color: #c678dd; /* Purple for keywords */
+        }
+        .code-box .string {
+            color: #98c379; /* Green for strings */
+        }
+        .code-box .number {
+            color: #d19a66; /* Orange for numbers */
+        }
+        .icon-color {
+            color: #3b82f6; /* Blue-500 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navbar Sederhana -->
+    <header class="bg-blue-600 shadow-xl sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-white flex items-center">
+                <span class="mr-2">🐍</span> Python Explorer
+            </h1>
+            <nav class="hidden md:block">
+                <a href="#keunggulan" class="text-white hover:text-blue-200 transition duration-300 mx-3">Keunggulan</a>
+                <a href="#aplikasi" class="text-white hover:text-blue-200 transition duration-300 mx-3">Penerapan</a>
+                <a href="#pembelajaran" class="text-white hover:text-blue-200 transition duration-300 mx-3">Pelajaran</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-700 text-white py-20 md:py-32 rounded-b-3xl shadow-2xl">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Python: Bahasa Pemrograman untuk Masa Depan</h2>
+                <p class="text-xl md:text-2xl font-light mb-8 opacity-90">
+                    Sintaks sederhana, mudah dibaca, dan fleksibel. Cocok untuk pemula hingga profesional di era Kecerdasan Buatan.
+                </p>
+                <!-- Interactive Button to show sample code -->
+                <button onclick="showPythonExample()" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg transform hover:scale-105">
+                    Lihat Contoh Kode
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Code Example Display -->
+    <section id="code-example" class="container mx-auto px-6 mt-8 hidden">
+        <div class="max-w-3xl mx-auto bg-gray-900 p-6 rounded-xl shadow-2xl">
+            <h3 class="text-xl font-semibold text-white mb-4">Contoh Sederhana Python (Kalkulator Luas Persegi)</h3>
+            <div class="code-box">
+                <span class="comment"># Fungsi untuk menghitung luas persegi</span><br>
+                <span class="keyword">def</span> hitung_luas(<span class="keyword">sisi</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> sisi * sisi<br><br>
+
+                <span class="comment"># Input dari pengguna</span><br>
+                <span class="keyword">sisi_persegi</span> = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Masukkan panjang sisi (cm): "</span>))<br><br>
+
+                <span class="comment"># Panggil fungsi dan tampilkan hasil</span><br>
+                <span class="keyword">luas</span> = hitung_luas(sisi_persegi)<br>
+                <span class="keyword">print</span>(<span class="string">f"Luas persegi adalah: {luas} cm²"</span>)<br>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Content Section 1: Keunggulan Python -->
+    <section id="keunggulan" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h3 class="text-3xl font-bold text-center mb-12 text-blue-700">Mengapa Python Begitu Populer?</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Sederhana dan Mudah Dibaca -->
+                <div class="p-6 rounded-xl shadow-lg border-t-4 border-yellow-400 hover:shadow-xl transition duration-300">
+                    <div class="text-4xl icon-color mb-4">📝</div>
+                    <h4 class="text-xl font-semibold mb-3">Sintaks Human-Readable</h4>
+                    <p class="text-gray-600">Python dirancang agar sintaksnya mirip bahasa Inggris, memudahkan pemula fokus pada logika pemrograman tanpa dibebani aturan rumit. Ideal sebagai bahasa pemrograman pertama.</p>
+                </div>
+
+                <!-- Card 2: Kelengkapan Pustaka (Library) -->
+                <div class="p-6 rounded-xl shadow-lg border-t-4 border-yellow-400 hover:shadow-xl transition duration-300">
+                    <div class="text-4xl icon-color mb-4">📚</div>
+                    <h4 class="text-xl font-semibold mb-3">Ekosistem Pustaka Luas</h4>
+                    <p class="text-gray-600">Dengan ribuan *library* siap pakai (Pandas, NumPy, dll.), programmer dapat membuat aplikasi kompleks dengan hanya beberapa baris kode, sangat efisien dan cepat.</p>
+                </div>
+
+                <!-- Card 3: Multifunctional & Fleksibel -->
+                <div class="p-6 rounded-xl shadow-lg border-t-4 border-yellow-400 hover:shadow-xl transition duration-300">
+                    <div class="text-4xl icon-color mb-4">🛠️</div>
+                    <h4 class="text-xl font-semibold mb-3">Mendukung Berbagai Paradigma</h4>
+                    <p class="text-gray-600">Python mendukung pemrograman berorientasi objek (OOP), fungsional, dan prosedural, menjadikannya fleksibel untuk digunakan di berbagai proyek teknologi, dari web hingga AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section 2: Penerapan Python di Dunia Nyata -->
+    <section id="aplikasi" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h3 class="text-3xl font-bold text-center mb-12 text-blue-700">Aplikasi Python di Berbagai Bidang</h3>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <!-- App 1: Data Science & AI -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-green-500">
+                    <div class="text-5xl mb-3 text-green-600">📊</div>
+                    <h4 class="font-bold text-lg mb-1">Data Science & AI</h4>
+                    <p class="text-sm text-gray-500">Pustaka: NumPy, Pandas, TensorFlow. (Olah data, Visualisasi, Model AI)</p>
+                </div>
+
+                <!-- App 2: Web Development -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-pink-500">
+                    <div class="text-5xl mb-3 text-pink-600">🌐</div>
+                    <h4 class="font-bold text-lg mb-1">Pengembangan Web</h4>
+                    <p class="text-sm text-gray-500">Framework: Django & Flask. (Membangun sisi *backend* website)</p>
+                </div>
+
+                <!-- App 3: Automation & IoT -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-purple-500">
+                    <div class="text-5xl mb-3 text-purple-600">🤖</div>
+                    <h4 class="font-bold text-lg mb-1">Otomasi Sistem & IoT</h4>
+                    <p class="text-sm text-gray-500">Mengontrol perangkat keras dan menjalankan tugas berulang secara otomatis.</p>
+                </div>
+
+                <!-- App 4: Game & Cybersecurity -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-yellow-500">
+                    <div class="text-5xl mb-3 text-yellow-600">🛡️</div>
+                    <h4 class="font-bold text-lg mb-1">Game Sederhana & Keamanan</h4>
+                    <p class="text-sm text-gray-500">Digunakan untuk prototyping game dan alat bantu pengujian keamanan siber.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section 3: Python dalam Pembelajaran Siswa -->
+    <section id="pembelajaran" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h3 class="text-3xl font-bold text-center mb-12 text-blue-700">Python: Mengembangkan Keterampilan Siswa</h3>
+
+            <div class="flex flex-col lg:flex-row gap-10 items-center">
+                
+                <!-- Left: Image/Illustration -->
+                <div class="w-full lg:w-1/3 p-6 bg-blue-50 rounded-2xl shadow-xl border-2 border-blue-200">
+                    <!-- Placeholder for image/illustration -->
+                    <div class="h-40 flex items-center justify-center text-blue-600 font-bold text-center">
+                        
+                    </div>
+                </div>
+
+                <!-- Right: Key Benefits -->
+                <div class="w-full lg:w-2/3 space-y-6">
+                    <!-- Benefit 1 -->
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-2xl text-indigo-600 mr-4 font-extrabold">🧠</span>
+                        <div>
+                            <p class="font-semibold text-lg text-indigo-700">Melatih Berpikir Logis & Analitis</p>
+                            <p class="text-gray-600">Melalui latihan seperti percabangan (`if/else`) dan perulangan, siswa menguasai dasar-dasar logika pemrograman dan *problem solving*.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Benefit 2 -->
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-2xl text-indigo-600 mr-4 font-extrabold">⚡</span>
+                        <div>
+                            <p class="font-semibold text-lg text-indigo-700">Eksperimen Cepat</p>
+                            <p class="text-gray-600">Siswa dapat langsung melihat hasil program mereka tanpa perlu proses kompilasi yang rumit, mendorong eksplorasi dan kreativitas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-2xl text-indigo-600 mr-4 font-extrabold">🤝</span>
+                        <div>
+                            <p class="font-semibold text-lg text-indigo-700">Komunitas & Dokumentasi Lengkap</p>
+                            <p class="text-gray-600">Sumber belajar, forum diskusi, dan panduan resmi mudah diakses, sangat membantu pemula dan mendukung guru dalam proses mengajar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="text-xl font-bold mb-3">Siap Memulai Koding?</h4>
+            <p class="text-sm text-gray-400">Python adalah langkah awal yang ideal. Pelajari, eksplorasi, dan ciptakan peluang baru di era digital!</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Interactivity -->
+    <script>
+        /**
+         * Fungsi untuk menampilkan/menyembunyikan contoh kode Python.
+         * Dipanggil saat tombol "Lihat Contoh Kode" ditekan.
+         */
+        function showPythonExample() {
+            const codeSection = document.getElementById('code-example');
+            const button = document.querySelector('.hero-section button');
+            
+            if (codeSection.classList.contains('hidden')) {
+                codeSection.classList.remove('hidden');
+                button.textContent = 'Sembunyikan Contoh Kode';
+                // Scroll to the code section
+                codeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                codeSection.classList.add('hidden');
+                button.textContent = 'Lihat Contoh Kode';
+            }
+        }
+    </script>
+</body>
+</html>
