@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perangkat Animasi (Animation Tools) dalam KKA</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai standar */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            scroll-behavior: smooth;
+        }
+        /* Skema Warna Kreatif: Pink/Merah Muda sebagai warna utama */
+        .primary-color {
+            background-color: #db2777; /* Pink-600 */
+        }
+        .text-primary {
+            color: #db2777; /* Pink-600 */
+        }
+        .card-component {
+            transition: box-shadow 0.3s;
+            cursor: default;
+            border-bottom: 5px solid #ec4899; /* Pink-500 border */
+        }
+        .card-component:hover {
+            transform: none;
+            box-shadow: 0 8px 15px -3px rgba(219, 39, 119, 0.2); /* Shadow with pink tint */
+        }
+        .icon-creative {
+            color: #f97316; /* Orange-500 for creativity icons */
+        }
+        /* Styling untuk contoh praktis */
+        .example-box {
+            background-color: #fff7ed; /* Orange-50 */
+            border-left: 5px solid #f59e0b; /* Amber-500 */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        /* Warna untuk penekanan koding/AI */
+        .coding-color {
+            color: #1d4ed8; /* Blue-700 */
+        }
+        .ai-color {
+            color: #10b981; /* Teal-500 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navbar Sederhana -->
+    <header class="bg-gray-800 shadow-xl sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-white flex items-center">
+                <span class="mr-2 icon-creative text-4xl">🎬</span> Perangkat Animasi
+            </h1>
+            <nav class="hidden md:block">
+                <a href="#koding" class="text-white hover:text-pink-300 transition duration-300 mx-3">Visualisasi Koding</a>
+                <a href="#ai" class="text-white hover:text-pink-300 transition duration-300 mx-3">Memahami AI</a>
+                <a href="#kreativitas" class="text-white hover:text-pink-300 transition duration-300 mx-3">Kreativitas & CT</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section: Definisi Animation Tools -->
+        <section class="primary-color text-white py-20 md:py-32 rounded-b-3xl shadow-2xl">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Jembatan Visual Abstraksi Digital</h2>
+                    <p class="text-xl md:text-2xl font-light mb-8 opacity-90">
+                        Perangkat animasi adalah alat untuk menciptakan gambar bergerak, visual interaktif, dan ilustrasi dinamis.
+                    </p>
+                    <p class="text-lg font-medium italic opacity-90">
+                        Membuat konsep abstrak Koding dan Kecerdasan Artificial (KA) menjadi lebih mudah dipahami dan menarik.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 1: Peran dalam Koding -->
+        <section id="koding" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-primary">Memvisualisasikan Logika Koding</h3>
+                <p class="text-center text-lg max-w-3xl mx-auto mb-10 text-gray-600">Animasi berfungsi sebagai penerjemah visual, membantu siswa pemula memahami bagaimana setiap baris kode dieksekusi oleh komputer.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Visualisasi Variabel & Loop -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-pink-500">
+                        <div class="text-4xl icon-creative mb-4">🔄</div>
+                        <h4 class="text-xl font-bold mb-3 coding-color">1. Visualisasi Alur Program</h4>
+                        <p class="text-gray-600">Menunjukkan secara visual bagaimana perulangan (*loop*) berjalan, bagaimana variabel berubah nilainya, dan kapan kondisi logis (*if-else*) terpenuhi.</p>
+                        <div class="example-box">
+                            Contoh: Animasi bola memantul 10 kali saat *loop* `for` dieksekusi, menunjukkan hitungan variabel.
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Jembatan ke Sintaks -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-pink-500">
+                        <div class="text-4xl icon-creative mb-4">🧱</div>
+                        <h4 class="text-xl font-bold mb-3 coding-color">2. Jembatan untuk Pemula</h4>
+                        <p class="text-gray-600">Tools berbasis blok (Scratch, Blockly) menggunakan animasi untuk membuat antarmuka yang ramah. Ini jembatan efektif sebelum beralih ke bahasa teks seperti Python.</p>
+                        <div class="example-box">
+                            Contoh: Siswa menyusun blok, dan karakter langsung bergerak, menghubungkan aksi visual dengan urutan instruksi (algoritma).
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Debugging Visual -->
+                    <div class="card-component p-6 rounded-xl shadow-lg bg-gray-50 border-t-4 border-pink-500">
+                        <div class="text-4xl icon-creative mb-4">🐞</div>
+                        <h4 class="text-xl font-bold mb-3 coding-color">3. Memudahkan *Debugging*</h4>
+                        <p class="text-gray-600">Animasi membantu siswa melacak kesalahan logis. Jika animasi bergerak tidak sesuai harapan, siswa dapat langsung mengidentifikasi di mana alur kodenya salah.</p>
+                        <div class="example-box">
+                            Contoh: Karakter gagal mencapai target; siswa melihat langkah animasi terakhir untuk menemukan perintah yang salah.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 2: Peran dalam Kecerdasan Artificial (KA) -->
+        <section id="ai" class="py-16 md:py-24 bg-pink-50">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-primary">Animasi untuk Memahami Model AI Abstrak</h3>
+
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <!-- Column 1: Jaringan Saraf & Data -->
+                    <div class="w-full lg:w-1/2 p-6 bg-white rounded-2xl shadow-xl border-l-8 border-teal-500">
+                        <h4 class="text-2xl font-bold ai-color mb-4 flex items-center">
+                            <span class="mr-3 text-3xl">🧠</span> Visualisasi Jaringan Saraf
+                        </h4>
+                        <p class="mb-4 text-gray-600">Konsep seperti Jaringan Saraf Tiruan (*Neural Networks*), *Training*, dan *Weight* dapat divisualisasikan melalui animasi grafis.</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>**Aliran Data:** Animasi menunjukkan bagaimana data input (gambar/suara) mengalir dari satu lapisan ke lapisan saraf berikutnya.</li>
+                            <li>**Proses Pembelajaran:** Animasi dapat menggambarkan bagaimana model AI belajar dan menyesuaikan diri dari waktu ke waktu.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Pengambilan Keputusan AI -->
+                    <div class="w-full lg:w-1/2 p-6 bg-white rounded-2xl shadow-xl border-l-8 border-orange-500">
+                        <h4 class="text-2xl font-bold icon-creative mb-4 flex items-center">
+                            <span class="mr-3 text-3xl">⚙️</span> Aksi dan Hasil Algoritma
+                        </h4>
+                        <p class="mb-4 text-gray-600">Animasi *real-time* dapat menggambarkan bagaimana sistem AI mengambil keputusan berdasarkan pola yang telah dikenali.</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>**Klasifikasi Objek:** Animasi menunjukkan kotak pembatas (*bounding box*) bergerak di layar saat AI mendeteksi objek.</li>
+                            <li>**Prediksi:** Menunjukkan pergerakan grafis atau hasil visual setelah AI memproses data input, menjelaskan hubungan input dan output.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section 3: Kreativitas dan Berpikir Komputasional -->
+        <section id="kreativitas" class="py-16 md:py-24 bg-white border-t-8 border-pink-600">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h3 class="text-3xl font-bold text-center mb-12 text-primary">Meningkatkan Kreativitas dan Berpikir Komputasional</h3>
+                
+                <div class="bg-yellow-50 p-8 rounded-xl shadow-lg border-l-8 border-amber-600 space-y-4">
+                    <div class="flex items-start">
+                        <span class="text-3xl icon-creative mr-4">📐</span>
+                        <div>
+                            <p class="font-bold text-lg text-orange-800">Melatih Berpikir Komputasional (CT)</p>
+                            <p class="text-gray-700">Merancang animasi memerlukan **dekomposisi** alur cerita, **pengenalan pola** gerakan, **abstraksi** detail latar belakang, dan **algoritma** urutan adegan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <span class="text-3xl icon-creative mr-4">🎨</span>
+                        <div>
+                            <p class="font-bold text-lg text-orange-800">Menghubungkan Seni dan Teknologi</p>
+                            <p class="text-gray-700">Mendorong siswa untuk menciptakan produk digital yang menggabungkan kemampuan koding dengan nilai estetika dan seni visual.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <span class="text-3xl icon-creative mr-4">⚡</span>
+                        <div>
+                            <p class="font-bold text-lg text-orange-800">AI untuk Efisiensi Kreatif</p>
+                            <p class="text-gray-700">Siswa belajar menggunakan fitur AI (seperti *auto-motion* atau *AI lip-sync*) untuk mempercepat dan menyempurnakan proses pembuatan animasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="text-xl font-bold mb-3">Bina Talenta Indonesia</h4>
+            <p class="text-sm text-gray-400">Perangkat animasi mengubah pembelajaran teknologi menjadi pengalaman yang kreatif dan menawan.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Minimal script needed
+    </script>
+</body>
+</html>
