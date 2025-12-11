@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKPD Interaktif: Teknologi & Budaya Nusantara</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai standar */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .section-card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .question-box {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+        }
+        .correct-feedback {
+            color: #10b981; /* green-500 */
+            font-weight: 600;
+        }
+        .incorrect-feedback {
+            color: #ef4444; /* red-500 */
+            font-weight: 600;
+        }
+        /* Drag and Drop Styles */
+        .draggable {
+            cursor: grab;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem 0;
+            border-radius: 0.5rem;
+            background-color: #e0f2f1; /* teal-100 */
+            border: 1px solid #2dd4bf; /* teal-400 */
+            transition: all 0.2s;
+        }
+        .dropzone {
+            min-height: 100px;
+            padding: 1rem;
+            border: 2px dashed #93c5fd; /* blue-300 */
+            border-radius: 0.75rem;
+            background-color: #eff6ff; /* blue-50 */
+            transition: all 0.2s;
+        }
+        .dropzone.drag-over {
+            background-color: #dbeafe; /* blue-100 */
+            border-color: #1d4ed8; /* blue-700 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navbar Sederhana -->
+    <header class="bg-indigo-700 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-white">LKPD: TEKNOLOGI & BUDAYA</h1>
+        </div>
+    </header>
+
+    <!-- Main Content LKPD -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto space-y-12">
+
+            <!-- Title and Instructions -->
+            <section class="section-card bg-indigo-50 border-t-4 border-indigo-500">
+                <h2 class="text-3xl font-extrabold text-indigo-800 mb-4">Lembar Kerja Peserta Didik (LKPD) Interaktif</h2>
+                <p class="text-lg text-indigo-700">Materi: Koding, Kecerdasan Artificial (KA), dan Kebudayaan Indonesia.</p>
+                <div class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 rounded-lg">
+                    <p class="font-semibold text-yellow-800">Petunjuk Pengerjaan:</p>
+                    <ul class="list-disc list-inside text-yellow-700 text-sm mt-2 space-y-1">
+                        <li>Jawablah semua pertanyaan di Bagian A, B, dan C.</li>
+                        <li>Tekan tombol "Kirim Jawaban" untuk melihat skor dan umpan balik otomatis (skor esai tidak termasuk).</li>
+                        <li>Untuk Bagian B (Kategorisasi), tarik dan letakkan item ke dalam kotak kategori yang sesuai.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Bagian A: Pilihan Ganda (Pengetahuan Dasar) -->
+            <section class="section-card" id="part-a">
+                <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b pb-2">Bagian A: Pilihan Ganda</h3>
+
+                <!-- Q1 -->
+                <div class="question-box">
+                    <p class="font-semibold mb-3">1. Manakah peran teknologi KA yang paling tepat dalam konteks pelestarian bahasa daerah?</p>
+                    <div class="space-y-2">
+                        <label class="block">
+                            <input type="radio" name="q1" value="A" class="mr-2"> A. Membuat aplikasi game edukasi tentang tarian tradisional.
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="q1" value="B" class="mr-2"> B. Menerjemahkan bahasa daerah ke bahasa asing secara instan.
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="q1" value="C" class="mr-2"> C. Mendokumentasikan motif batik kuno ke dalam format video 3D.
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="q1" value="D" class="mr-2"> D. Menganalisis pola irama musik daerah yang langka.
+                        </label>
+                    </div>
+                    <div id="feedback-q1" class="mt-2 text-sm"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="question-box">
+                    <p class="font-semibold mb-3">2. Dampak negatif utama yang timbul dari penggunaan AI secara berlebihan oleh siswa adalah...</p>
+                    <div class="space-y-2">
+                        <label class="block">
+                            <input type="radio" name="q2" value="A" class="mr-2"> A. Terjadinya pergeseran budaya lokal ke budaya digital modern.
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="q2" value="B" class="mr-2"> B. Kurangnya pengembangan kreativitas alami dan ketergantungan.
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="q2" value="C" class="mr-2"> C. Kesulitan dalam mengakses cerita rakyat yang telah didigitalisasi.
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="q2" value="D" class="mr-2"> D. Munculnya masalah *debugging* dalam kode program.
+                        </label>
+                    </div>
+                    <div id="feedback-q2" class="mt-2 text-sm"></div>
+                </div>
+            </section>
+            
+            <!-- Bagian B: Categorization (Drag & Drop) -->
+            <section class="section-card" id="part-b">
+                <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b pb-2">Bagian B: Kategorisasi Dampak (Drag & Drop)</h3>
+                <p class="mb-4 text-gray-600">Tarik dan letakkan kegiatan di bawah ini ke dalam kategori Teknologi yang paling dominan digunakan.</p>
+
+                <!-- Draggable Items Container -->
+                <div id="items-container" class="bg-gray-100 p-4 rounded-lg flex flex-wrap gap-2 mb-8">
+                    <!-- Items will be populated by JS -->
+                </div>
+
+                <!-- Drop Zones -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-indigo-600 mb-3">Dominan Koding</h4>
+                        <div id="dropzone-koding" class="dropzone" data-category="koding"></div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-indigo-600 mb-3">Dominan Kecerdasan Artificial (KA)</h4>
+                        <div id="dropzone-ka" class="dropzone" data-category="ka"></div>
+                    </div>
+                </div>
+                <div id="feedback-part-b" class="mt-4 text-sm font-semibold"></div>
+            </section>
+            
+            <!-- Bagian C: Analisis Skenario (Simulasi Pemecahan Masalah) -->
+            <section class="section-card" id="part-c">
+                <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b pb-2">Bagian C: Analisis Skenario</h3>
+                
+                <div class="question-box">
+                    <p class="font-semibold mb-3">3. Skenario: Anda sedang membuat aplikasi yang menampilkan motif batik. Saat ini, aplikasi Anda hanya menampilkan 5 motif yang telah ditentukan. Anda ingin aplikasi tersebut bisa menyarankan motif batik baru yang memiliki kemiripan corak dengan motif "Parang Rusak" (sebagai warisan budaya).</p>
+                    <p class="mb-3 text-gray-600 italic">Teknologi manakah yang paling TEPAT dan harus Anda gunakan untuk mendapatkan fitur rekomendasi motif baru tersebut?</p>
+                    
+                    <select id="q3-select" class="w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">-- Pilih Jawaban --</option>
+                        <option value="A">Menggunakan bahasa pemrograman JavaScript untuk membuat database motif. (Koding)</option>
+                        <option value="B">Menggunakan teknologi Computer Vision dan Machine Learning untuk menganalisis dan merekomendasikan pola. (KA)</option>
+                        <option value="C">Menggunakan fitur *hyperlink* untuk menghubungkan ke website museum batik. (Koding)</option>
+                        <option value="D">Menerapkan *debugging* pada seluruh baris kode aplikasi. (Koding)</option>
+                    </select>
+                    <div id="feedback-q3" class="mt-2 text-sm"></div>
+                </div>
+            </section>
+            
+            <!-- Bagian D: Esai (Refleksi) -->
+            <section class="section-card" id="part-d">
+                <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b pb-2">Bagian D: Refleksi Esai</h3>
+                
+                <div class="question-box">
+                    <p class="font-semibold mb-3">4. Jelaskan bagaimana sikap kritis dan bertanggung jawab dapat membantu siswa dalam memanfaatkan teknologi Koding atau Kecerdasan Artificial (KA) agar terhindar dari dampak negatif seperti plagiarisme atau pergeseran budaya.</p>
+                    <textarea id="q4-essay" rows="6" class="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Tuliskan jawaban Anda di sini..."></textarea>
+                    <p class="text-sm italic text-gray-500 mt-1">*(Jawaban esai ini tidak dinilai otomatis, akan dinilai secara manual oleh guru.)*</p>
+                </div>
+            </section>
+
+            <!-- Submission and Score -->
+            <section class="section-card text-center bg-indigo-50">
+                <button onclick="submitLKPD()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-10 rounded-full transition duration-300 shadow-lg text-lg">
+                    Kirim Jawaban & Cek Skor Otomatis
+                </button>
+                
+                <div id="score-result" class="mt-6 p-4 text-left bg-white border rounded-lg hidden">
+                    <h4 class="text-xl font-bold mb-2 text-indigo-800">Hasil Penilaian Otomatis (Bagian A, B, C)</h4>
+                    <p class="text-lg">Total Skor Anda: <span id="score-display" class="font-extrabold text-indigo-600 text-2xl">0</span> / 100</p>
+                    <p class="text-sm mt-2 text-gray-600">*Tambahan skor akan diberikan setelah guru menilai Bagian D (Esai).</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- DATA JAWABAN BENAR ---
+        const correctAnswers = {
+            q1: 'B',
+            q2: 'B',
+            q3: 'B',
+        };
+
+        const scorePerQuestion = 25; // A, B, C total 3 soal utama (A=2, B=1, C=1). Total 4 skor x 25 = 100.
+        
+        // Data untuk Drag & Drop (Bagian B)
+        const dragDropData = [
+            { id: 'item1', text: 'Membuat aplikasi game edukasi tarian Jawa.', correctCategory: 'koding' },
+            { id: 'item2', text: 'KA: Menganalisis ribuan data citra motif batik untuk menemukan pola tersembunyi.', correctCategory: 'ka' },
+            { id: 'item3', text: 'Membuat website promosi festival budaya digital menggunakan HTML/CSS.', correctCategory: 'koding' },
+            { id: 'item4', text: 'KA: Menerjemahkan aksara kuno secara otomatis untuk dokumentasi.', correctCategory: 'ka' }
+        ];
+
+        let totalScore = 0;
+
+        // ====================================================================
+        // --- DRAG AND DROP LOGIC (BAGIAN B) ---
+        // ====================================================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Populate draggable items
+            const itemsContainer = document.getElementById('items-container');
+            dragDropData.forEach(item => {
+                const div = document.createElement('div');
+                div.id = item.id;
+                div.className = 'draggable bg-indigo-200 text-indigo-900 shadow-md transition duration-200 hover:shadow-lg';
+                div.setAttribute('draggable', true);
+                div.textContent = item.text;
+                itemsContainer.appendChild(div);
+            });
+
+            const draggables = document.querySelectorAll('.draggable');
+            const dropzones = document.querySelectorAll('.dropzone');
+
+            // Drag Events Handlers
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', draggable.id);
+                    setTimeout(() => draggable.classList.add('opacity-50'), 0);
+                });
+                draggable.addEventListener('dragend', () => {
+                    draggable.classList.remove('opacity-50');
+                });
+            });
+
+            // Drop Zone Events Handlers
+            dropzones.forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('drag-over');
+                });
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    
+                    const id = e.dataTransfer.getData('text/plain');
+                    const draggable = document.getElementById(id);
+                    
+                    if (draggable && e.target.closest('.dropzone') === zone) {
+                        zone.appendChild(draggable);
+                    }
+                });
+            });
+        });
+
+        // ====================================================================
+        // --- SUBMISSION AND SCORING LOGIC ---
+        // ====================================================================
+
+        function checkMultipleChoice(qNum, correctAns) {
+            const radios = document.getElementsByName(`q${qNum}`);
+            let selectedValue = null;
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    selectedValue = radio.value;
+                }
+                // Disable for scoring visualization
+                radio.disabled = true; 
+            });
+
+            const feedbackEl = document.getElementById(`feedback-q${qNum}`);
+            if (selectedValue === correctAns) {
+                feedbackEl.textContent = 'Jawaban Benar! (Skor +12.5)';
+                feedbackEl.className = 'mt-2 text-sm correct-feedback';
+                totalScore += (scorePerQuestion / 2); // Q1 and Q2 each get half of 25
+            } else {
+                feedbackEl.textContent = `Jawaban Salah. Jawaban benar adalah ${correctAns}.`;
+                feedbackEl.className = 'mt-2 text-sm incorrect-feedback';
+            }
+        }
+
+        function checkSelect(qNum, correctAns) {
+            const selectEl = document.getElementById(`q${qNum}-select`);
+            const selectedValue = selectEl.value;
+            selectEl.disabled = true;
+
+            const feedbackEl = document.getElementById(`feedback-q${qNum}`);
+            if (selectedValue === correctAns) {
+                feedbackEl.textContent = 'Jawaban Benar! (Skor +25)';
+                feedbackEl.className = 'mt-2 text-sm correct-feedback';
+                totalScore += scorePerQuestion;
+            } else {
+                feedbackEl.textContent = `Jawaban Salah. Jawaban benar adalah opsi ${correctAns}.`;
+                feedbackEl.className = 'mt-2 text-sm incorrect-feedback';
+            }
+        }
+
+        function checkDragAndDrop() {
+            let correctCount = 0;
+            const dropzones = document.querySelectorAll('.dropzone');
+            
+            // Check items in each dropzone
+            dropzones.forEach(zone => {
+                const category = zone.getAttribute('data-category');
+                const droppedItems = zone.querySelectorAll('.draggable');
+                
+                droppedItems.forEach(item => {
+                    const itemId = item.id;
+                    const itemData = dragDropData.find(d => d.id === itemId);
+                    
+                    item.classList.remove('bg-indigo-200', 'bg-red-200');
+                    item.draggable = false; // Disable dragging after submission
+
+                    if (itemData && itemData.correctCategory === category) {
+                        correctCount++;
+                        item.classList.add('bg-green-200', 'correct-feedback');
+                    } else {
+                        item.classList.add('bg-red-200', 'incorrect-feedback');
+                    }
+                });
+            });
+
+            // Calculate score for part B (25 points total, 4 items -> 6.25 points each)
+            const scorePartB = correctCount * (scorePerQuestion * 4 / 4 / 4); // 4 items in D&D, making it 25 points total.
+            totalScore += scorePartB;
+
+            const feedbackEl = document.getElementById('feedback-part-b');
+            feedbackEl.textContent = `Hasil Kategorisasi: ${correctCount} dari 4 item benar. (Skor +${scorePartB.toFixed(2)})`;
+            if (correctCount === 4) {
+                feedbackEl.className = 'mt-4 text-lg correct-feedback';
+            } else {
+                feedbackEl.className = 'mt-4 text-lg incorrect-feedback';
+            }
+        }
+
+
+        function submitLKPD() {
+            totalScore = 0; // Reset score on each submission
+
+            // 1. Check Multiple Choice (Q1 & Q2)
+            checkMultipleChoice(1, correctAnswers.q1);
+            checkMultipleChoice(2, correctAnswers.q2);
+
+            // 2. Check Drag and Drop (Part B)
+            checkDragAndDrop();
+
+            // 3. Check Select (Q3)
+            checkSelect(3, correctAnswers.q3);
+            
+            // 4. Handle Essay (Q4)
+            const essayText = document.getElementById('q4-essay').value.trim();
+            if (essayText.length > 0) {
+                document.getElementById('q4-essay').disabled = true;
+            }
+
+            // Display Score
+            document.getElementById('score-display').textContent = totalScore.toFixed(2);
+            document.getElementById('score-result').classList.remove('hidden');
+
+            // Disable submission button
+            document.querySelector('button').disabled = true;
+            document.querySelector('button').classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+            document.querySelector('button').classList.add('bg-gray-400');
+
+            // Scroll to score
+            document.getElementById('score-result').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
