@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neural Nexus 2.0: Cyber Academy</title>
+    <style>
+        /* --- CORE VISUALS --- */
+        :root {
+            --bg: #0b0c15;
+            --panel: #15192b;
+            --primary: #00f0ff; /* Cyan */
+            --accent: #ff003c; /* Cyberpunk Red */
+            --success: #00ff9d;
+            --text-main: #e0e6ed;
+            --text-dim: #94a1b2;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #app-container {
+            width: 100%;
+            max-width: 480px; /* Mobile Viewport Limit */
+            height: 100%;
+            background: var(--panel);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        /* --- BACKGROUND FX --- */
+        .scanlines {
+            position: absolute; top:0; left:0; right:0; bottom:0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* --- SCREENS --- */
+        .screen {
+            flex: 1;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            padding: 20px;
+            animation: fadeIn 0.3s ease-in;
+        }
+        .screen.active { display: flex; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- UI COMPONENTS --- */
+        h1, h2, h3 { margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { color: var(--primary); text-shadow: 0 0 10px var(--primary); font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
+        
+        .btn {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-bottom: 15px;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            transition: all 0.2s;
+            width: 100%;
+        }
+        .btn:active { background: var(--primary); color: #000; transform: scale(0.98); }
+        .btn-locked { border-color: #333; color: #555; background: transparent; pointer-events: none; }
+        .btn-danger { border-color: var(--accent); color: var(--accent); background: rgba(255, 0, 60, 0.1); }
+        .btn-danger:active { background: var(--accent); color: white; }
+
+        /* --- MAP SCREEN --- */
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            overflow-y: auto;
+            padding-bottom: 20px;
+        }
+        .level-card {
+            background: #1e2336;
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .level-card.unlocked { border-color: var(--primary); box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); }
+        .level-card.completed { border-color: var(--success); color: var(--success); }
+        .level-num { font-size: 2rem; font-weight: bold; font-family: var(--font-mono); }
+        .level-title { font-size: 0.7rem; margin-top: 5px; color: var(--text-dim); }
+
+        /* --- GAME HUD --- */
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        .hp-bar-container { width: 100px; height: 10px; background: #333; border-radius: 5px; overflow: hidden; }
+        .hp-bar { height: 100%; background: var(--accent); width: 100%; transition: width 0.3s; }
+        .progress-text { font-family: var(--font-mono); font-size: 0.9rem; color: var(--primary); }
+
+        /* --- GAME CONTENT --- */
+        .code-block {
+            background: #000;
+            border-left: 3px solid var(--primary);
+            color: #d4d4d4;
+            padding: 15px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; font-style: italic; }
+
+        .question-text { font-size: 1.1rem; margin-bottom: 15px; line-height: 1.4; }
+
+        /* --- FEEDBACK MODAL --- */
+        .modal {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            text-align: center;
+        }
+        .modal h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .modal p { color: var(--text-dim); margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+    <div class="scanlines"></div>
+
+    <!-- 1. HOME SCREEN -->
+    <div id="screen-home" class="screen active">
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+            <div style="font-size: 4rem; margin-bottom:10px;">🧠</div>
+            <h1>Neural Nexus<br><span style="font-size:1rem; color:var(--text-dim)">Cyber Academy v2.0</span></h1>
+            <p style="text-align:center; color:var(--text-dim); margin-bottom:40px;">
+                Kuasai Koding & AI.<br>10 Level. 100 Tantangan.<br>Jangan biarkan sistem crash.
+            </p>
+            <button class="btn" onclick="app.showScreen('map')">MASUK SISTEM</button>
+            <button class="btn btn-danger" onclick="app.resetProgress()">RESET DATA</button>
+        </div>
+    </div>
+
+    <!-- 2. MAP SCREEN (LEVEL SELECT) -->
+    <div id="screen-map" class="screen">
+        <div class="hud">
+            <span>DATABASE</span>
+            <span style="color:var(--primary)">PILIH MODUL</span>
+        </div>
+        <div class="level-grid" id="level-container">
+            <!-- Level cards generated by JS -->
+        </div>
+        <button class="btn btn-danger" style="margin-top:auto" onclick="app.showScreen('home')">KEMBALI</button>
+    </div>
+
+    <!-- 3. GAMEPLAY SCREEN -->
+    <div id="screen-game" class="screen">
+        <div class="hud">
+            <div class="hp-bar-container"><div id="game-hp" class="hp-bar"></div></div>
+            <span class="progress-text" id="game-progress">0/10</span>
+        </div>
+
+        <div id="game-content" style="flex:1; overflow-y:auto;">
+            <div class="question-text" id="q-text">Loading...</div>
+            <div class="code-block" id="q-code"></div>
+            <div id="q-options"></div>
+        </div>
+        
+        <button class="btn btn-danger" onclick="app.quitLevel()">ABORT MISSION</button>
+    </div>
+
+    <!-- FEEDBACK OVERLAY -->
+    <div id="modal-feedback" class="modal">
+        <h2 id="fb-title">CORRECT</h2>
+        <p id="fb-desc">Explanation goes here.</p>
+        <button class="btn" id="fb-btn" onclick="game.nextQuestion()">LANJUT</button>
+    </div>
+
+</div>
+
+<script>
+/**
+ * DATABASE SOAL (LEVEL 1 FULL, LEVEL 2-10 GENERATOR)
+ * Struktur: Array of Objects.
+ */
+const GAME_DB = {
+    level1: [
+        { q: "Perintah mana yang digunakan untuk menampilkan teks di Python?", code: "", opts: ["print()", "echo()", "console.log()", "write()"], a: 0, exp: "Fungsi print() digunakan di Python untuk output." },
+        { q: "Variabel 'x' menyimpan angka 5. Tipe datanya adalah?", code: "x = 5", opts: ["String", "Integer", "Float", "Boolean"], a: 1, exp: "Angka bulat tanpa desimal disebut Integer." },
+        { q: "Apa hasil dari kode berikut?", code: "a = 10\nb = 5\nprint(a > b)", opts: ["True", "False", "Error", "None"], a: 0, exp: "Operator '>' membandingkan nilai. 10 lebih besar dari 5, maka True." },
+        { q: "Manakah cara penulisan string yang benar?", code: "", opts: ["nama = 'AI'", "nama = AI", "nama = [AI]", "nama : AI"], a: 0, exp: "String harus diapit tanda kutip (single atau double)." },
+        { q: "Simbol '#' di Python digunakan untuk?", code: "# Ini adalah kode", opts: ["Membuat variabel", "Komentar", "Import library", "Looping"], a: 1, exp: "Tanda pagar digunakan untuk komentar yang tidak dieksekusi program." },
+        { q: "Apa hasil operasi ini?", code: "print(10 % 3)", opts: ["3.33", "3", "1", "0"], a: 2, exp: "Operator '%' (Modulus) mencari sisa bagi. 10 dibagi 3 sisa 1." },
+        { q: "Bagaimana cara membuat list kosong?", code: "", opts: ["data = {}", "data = []", "data = ()", "data = list"], a: 1, exp: "Kurung siku [] digunakan untuk membuat List." },
+        { q: "AI belajar dari data yang diberi label. Ini disebut:", code: "", opts: ["Supervised Learning", "Unsupervised Learning", "Reinforcement", "Magic"], a: 0, exp: "Supervised Learning menggunakan data berlabel (kunci jawaban)." },
+        { q: "Manakah library Python populer untuk AI?", code: "", opts: ["React", "Laravel", "TensorFlow", "jQuery"], a: 2, exp: "TensorFlow adalah library open-source Google untuk Machine Learning." },
+        { q: "Apa output kode ini?", code: "nama = 'Bot'\nprint(nama + '2')", opts: ["Bot2", "Error", "Bot 2", "NaN"], a: 0, exp: "Operator '+' pada string berfungsi menggabungkan (concatenation)." }
+    ]
+};
+
+// --- APP CONTROLLER ---
+const app = {
+    levels: 10,
+    challengesPerLevel: 10,
+    progress: parseInt(localStorage.getItem('nn_progress')) || 1, // Max level unlocked
+    
+    init: function() {
+        this.renderMap();
+        // Prevent accidental back gesture on mobile
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function () { window.history.go(1); };
+    },
+
+    showScreen: function(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('screen-' + id).classList.add('active');
+        if(id === 'map') this.renderMap();
+    },
+
+    renderMap: function() {
+        const container = document.getElementById('level-container');
+        container.innerHTML = '';
+        const topics = ["Basic Syntax", "Logic Gate", "Loops", "Functions", "Data Structs", "Algorithms", "AI Intro", "Machine Learn", "Neural Nets", "Ethics & Final"];
+
+        for (let i = 1; i <= this.levels; i++) {
+            let status = 'locked';
+            if (i < this.progress) status = 'completed';
+            else if (i === this.progress) status = 'unlocked';
+
+            const div = document.createElement('div');
+            div.className = `level-card ${status}`;
+            div.innerHTML = `
+                <div class="level-num">${i < 10 ? '0'+i : i}</div>
+                <div class="level-title">${topics[i-1]}</div>
+                ${status === 'locked' ? '🔒' : (status === 'completed' ? '✅' : '▶️')}
+            `;
+            
+            if(status !== 'locked') {
+                div.onclick = () => game.start(i);
+            }
+            container.appendChild(div);
+        }
+    },
+
+    saveProgress: function(levelCompleted) {
+        if (levelCompleted >= this.progress && this.progress < this.levels) {
+            this.progress++;
+            localStorage.setItem('nn_progress', this.progress);
+        }
+    },
+
+    resetProgress: function() {
+        if(confirm("Hapus semua progress permainan?")) {
+            localStorage.removeItem('nn_progress');
+            this.progress = 1;
+            location.reload();
+        }
+    }
+};
+
+// --- GAME ENGINE ---
+const game = {
+    level: 1,
+    qIndex: 0,
+    hp: 100,
+    data: [],
+
+    start: function(levelIdx) {
+        this.level = levelIdx;
+        this.qIndex = 0;
+        this.hp = 100;
+        this.generateQuestions(levelIdx);
+        
+        app.showScreen('game');
+        this.updateHUD();
+        this.renderQuestion();
+    },
+
+    // GENERATOR SOAL (Untuk Level 2-10 agar kode tidak kepanjangan)
+    generateQuestions: function(lvl) {
+        if (lvl === 1) {
+            this.data = GAME_DB.level1; // Load real questions for Level 1
+        } else {
+            // Procedural Generator for Demo Purpose
+            // Dalam produk asli, Anda akan mengganti ini dengan database JSON lengkap
+            this.data = [];
+            for(let i=0; i<10; i++) {
+                // Logic Puzzle Generator
+                let num1 = Math.floor(Math.random() * 10) + 1;
+                let num2 = Math.floor(Math.random() * 10) + 1;
+                let isTrue = Math.random() > 0.5;
+                let op = isTrue ? '==' : '!=';
+                
+                // Membuat soal coding logika sederhana
+                let correctAnswer = isTrue ? (num1 === num1 ? 0 : 1) : (num1 !== num2 ? 0 : 1); 
+                
+                this.data.push({
+                    q: `Simulasi Tantangan Level ${lvl}-${i+1}: Evaluasi Logika`,
+                    code: `if (${num1} ${op} ${isTrue ? num1 : num2}):\n    return True\nelse:\n    return False`,
+                    opts: ["True", "False", "Error", "None"],
+                    a: isTrue ? 0 : 1,
+                    exp: `Ini adalah tantangan logika prosedural untuk Level ${lvl}.`
+                });
+            }
+        }
+    },
+
+    renderQuestion: function() {
+        const q = this.data[this.qIndex];
+        document.getElementById('q-text').innerText = q.q;
+        
+        const codeEl = document.getElementById('q-code');
+        if(q.code) {
+            codeEl.style.display = 'block';
+            // Simple syntax highlighting simulation
+            let html = q.code
+                .replace(/print|if|else|return/g, '<span class="keyword">$&</span>')
+                .replace(/'.*?'/g, '<span class="string">$&</span>')
+                .replace(/#.*/g, '<span class="comment">$&</span>');
+            codeEl.innerHTML = html;
+        } else {
+            codeEl.style.display = 'none';
+        }
+
+        const optsContainer = document.getElementById('q-options');
+        optsContainer.innerHTML = '';
+        q.opts.forEach((opt, idx) => {
+            let btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => this.checkAnswer(idx);
+            optsContainer.appendChild(btn);
+        });
+    },
+
+    checkAnswer: function(selectedIndex) {
+        const q = this.data[this.qIndex];
+        const modal = document.getElementById('modal-feedback');
+        const title = document.getElementById('fb-title');
+        const btn = document.getElementById('fb-btn');
+        const desc = document.getElementById('fb-desc');
+
+        modal.style.display = 'flex';
+
+        if (selectedIndex === q.a) {
+            // Correct
+            title.innerText = "ACCESS GRANTED";
+            title.style.color = "var(--success)";
+            desc.innerText = q.exp;
+            btn.innerText = "LANJUT";
+            btn.onclick = () => {
+                modal.style.display = 'none';
+                this.qIndex++;
+                if(this.qIndex >= 10) this.levelComplete();
+                else {
+                    this.updateHUD();
+                    this.renderQuestion();
+                }
+            };
+        } else {
+            // Wrong
+            this.hp -= 25; // 4x salah = mati
+            this.updateHUD();
+            
+            title.innerText = "ACCESS DENIED";
+            title.style.color = "var(--accent)";
+            desc.innerText = "Jawaban salah. Integritas sistem menurun.";
+            
+            if (this.hp <= 0) {
+                btn.innerText = "RESTART LEVEL";
+                btn.className = "btn btn-danger";
+                btn.onclick = () => {
+                    modal.style.display = 'none';
+                    this.start(this.level); // Restart
+                };
+            } else {
+                btn.innerText = "COBA LAGI";
+                btn.className = "btn";
+                btn.onclick = () => modal.style.display = 'none';
+            }
+        }
+    },
+
+    updateHUD: function() {
+        document.getElementById('game-hp').style.width = this.hp + '%';
+        // Warna bar berubah jika HP rendah
+        document.getElementById('game-hp').style.backgroundColor = this.hp < 40 ? 'var(--accent)' : 'var(--success)';
+        document.getElementById('game-progress').innerText = (this.qIndex + 1) + "/10";
+    },
+
+    levelComplete: function() {
+        app.saveProgress(this.level);
+        alert(`LEVEL ${this.level} COMPLETED!\nSistem dipulihkan. Membuka modul berikutnya...`);
+        app.showScreen('map');
+    }
+};
+
+// Start App
+app.init();
+
+</script>
+</body>
+</html>
