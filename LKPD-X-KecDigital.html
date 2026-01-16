@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>LKPD Keterampilan Digital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: #fdfefe;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+
+    .header {
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .header p {
+        margin-top: 8px;
+        font-size: 16px;
+        opacity: 0.9;
+    }
+
+    .content {
+        padding: 30px;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 20px 25px;
+        margin-bottom: 25px;
+        border-left: 6px solid #4facfe;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+        margin-top: 0;
+        color: #2c3e50;
+        font-size: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #34495e;
+        display: block;
+        margin-top: 12px;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 10px 12px;
+        margin-top: 6px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        min-height: 90px;
+        resize: vertical;
+    }
+
+    select {
+        background-color: #f8f9fa;
+    }
+
+    .btn-area {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .btn {
+        background: linear-gradient(90deg, #43e97b, #38f9d7);
+        color: #1b4332;
+        border: none;
+        padding: 14px 28px;
+        font-size: 16px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .footer {
+        text-align: center;
+        padding: 18px;
+        background: #f1f3f5;
+        font-size: 14px;
+        color: #555;
+    }
+
+    @media print {
+        body {
+            background: white;
+        }
+        .btn-area {
+            display: none;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>📘 LKPD Keterampilan Digital</h1>
+        <p>Mengenal Pentingnya Keterampilan Digital di Era Modern</p>
+    </div>
+
+    <div class="content">
+
+        <div class="card">
+            <h2>🧑‍🎓 A. Identitas Peserta Didik</h2>
+            <label>Nama Lengkap</label>
+            <input type="text">
+
+            <label>Kelas</label>
+            <select>
+                <option>Kelas X Pangeran Diponegoro</option>
+            </select>
+
+            <label>Tanggal</label>
+            <input type="date">
+        </div>
+
+        <div class="card">
+            <h2>🎯 B. Tujuan Pembelajaran</h2>
+            <p>
+                Setelah mengerjakan LKPD ini, peserta didik diharapkan mampu menjelaskan
+                pentingnya keterampilan digital serta menganalisis penerapannya dalam
+                kehidupan dan dunia kerja.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🌐 C. Tugas 1 – Analisis Aspek Kehidupan</h2>
+            <label>Pilih aspek kehidupan</label>
+            <select>
+                <option>Pendidikan</option>
+                <option>Pekerjaan</option>
+                <option>Komunikasi</option>
+                <option>Kehidupan Sehari-hari</option>
+            </select>
+
+            <label>Mengapa keterampilan digital penting pada aspek tersebut?</label>
+            <textarea></textarea>
+
+            <label>Sebutkan minimal 2 contoh penerapannya</label>
+            <textarea></textarea>
+        </div>
+
+        <div class="card">
+            <h2>💼 D. Tugas 2 – Analisis Pekerjaan Digital</h2>
+            <label>Nama Pekerjaan</label>
+            <input type="text">
+
+            <label>Deskripsi singkat pekerjaan</label>
+            <textarea></textarea>
+
+            <label>Keterampilan digital yang dibutuhkan (minimal 3)</label>
+            <textarea></textarea>
+
+            <label>Alasan keterampilan tersebut penting</label>
+            <textarea></textarea>
+        </div>
+
+        <div class="card">
+            <h2>🔍 E. Refleksi Diri</h2>
+            <label>Keterampilan digital yang sudah saya kuasai</label>
+            <textarea></textarea>
+
+            <label>Keterampilan digital yang ingin saya tingkatkan</label>
+            <textarea></textarea>
+        </div>
+
+        <div class="btn-area">
+            <button class="btn" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © LKPD Informatika – Keterampilan Digital  
+        <br>Belajar Cerdas, Bijak, dan Bertanggung Jawab
+    </div>
+
+</div>
+
+</body>
+</html>
