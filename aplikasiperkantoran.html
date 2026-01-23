@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>LKPD Aplikasi Perkantoran</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(90deg, #43cea2, #185a9d);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.header p {
+    margin-top: 10px;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+.content {
+    padding: 30px;
+}
+
+.card {
+    background: #fdfefe;
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 26px;
+    border-left: 6px solid #43cea2;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 21px;
+}
+
+label {
+    font-weight: 600;
+    color: #34495e;
+    display: block;
+    margin-top: 12px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 11px 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 95px;
+    resize: vertical;
+}
+
+select {
+    background-color: #f8f9fa;
+}
+
+.info-box {
+    background: #eaf4ff;
+    border-left: 5px solid #3498db;
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-size: 14.5px;
+}
+
+.btn-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn {
+    background: linear-gradient(90deg, #f7971e, #ffd200);
+    color: #5a3e00;
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.footer {
+    text-align: center;
+    padding: 18px;
+    background: #f1f3f5;
+    font-size: 14px;
+    color: #555;
+}
+
+@media print {
+    body {
+        background: white;
+    }
+    .btn-area {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>📊 LKPD Aplikasi Perkantoran</h1>
+        <p>Menambah Pengetahuan dan Wawasan tentang Aplikasi Perkantoran</p>
+    </div>
+
+    <div class="content">
+
+        <!-- Identitas -->
+        <div class="card">
+            <h2>🧑‍🎓 A. Identitas Peserta Didik</h2>
+            <label>Nama Lengkap</label>
+            <input type="text">
+
+            <label>Kelas</label>
+            <select>
+                <option>Kelas X Pangeran Diponegoro</option>
+            </select>
+
+            <label>Tanggal</label>
+            <input type="date">
+        </div>
+
+        <!-- Tujuan -->
+        <div class="card">
+            <h2>🎯 B. Tujuan LKPD</h2>
+            <p>
+                Melalui LKPD ini, peserta didik diharapkan mampu memahami pengertian,
+                jenis, fungsi, dan keuntungan aplikasi perkantoran dalam mempercepat
+                proses kerja di dunia pendidikan maupun dunia kerja.
+            </p>
+        </div>
+
+        <!-- Pemahaman Konsep -->
+        <div class="card">
+            <h2>📘 C. Pemahaman Konsep</h2>
+            <label>Apa yang dimaksud dengan aplikasi perkantoran?</label>
+            <textarea></textarea>
+
+            <label>Sebutkan contoh aplikasi perkantoran yang kamu ketahui!</label>
+            <textarea></textarea>
+
+            <div class="info-box">
+                💡 Petunjuk: Aplikasi perkantoran dapat berupa pengolah kata,
+                presentasi, maupun pengolah data.
+            </div>
+        </div>
+
+        <!-- Pengolah Kata -->
+        <div class="card">
+            <h2>📝 D. Aplikasi Pengolah Kata</h2>
+            <label>Sebutkan fungsi aplikasi pengolah kata!</label>
+            <textarea></textarea>
+
+            <label>Contoh penggunaan aplikasi pengolah kata dalam kegiatan belajar</label>
+            <textarea></textarea>
+        </div>
+
+        <!-- Pengolah Presentasi -->
+        <div class="card">
+            <h2>📽️ E. Aplikasi Pengolah Presentasi</h2>
+            <label>Mengapa aplikasi pengolah presentasi penting?</label>
+            <textarea></textarea>
+
+            <label>Sebutkan keuntungan penggunaan aplikasi presentasi</label>
+            <textarea></textarea>
+        </div>
+
+        <!-- Pengolah Data -->
+        <div class="card">
+            <h2>📊 F. Aplikasi Pengolah Data</h2>
+            <label>Sebutkan fungsi utama aplikasi pengolah data</label>
+            <textarea></textarea>
+
+            <label>Contoh data apa saja yang dapat diolah menggunakan spreadsheet?</label>
+            <textarea></textarea>
+        </div>
+
+        <!-- Analisis Manfaat -->
+        <div class="card">
+            <h2>⚙️ G. Analisis Manfaat</h2>
+            <label>Bagaimana aplikasi perkantoran dapat mempercepat proses kerja?</label>
+            <textarea></textarea>
+
+            <label>Apa dampaknya jika seseorang tidak menguasai aplikasi perkantoran?</label>
+            <textarea></textarea>
+        </div>
+
+        <!-- Refleksi -->
+        <div class="card">
+            <h2>🔍 H. Refleksi Diri</h2>
+            <label>Aplikasi perkantoran apa yang sudah kamu kuasai?</label>
+            <textarea></textarea>
+
+            <label>Aplikasi perkantoran apa yang ingin kamu pelajari lebih lanjut?</label>
+            <textarea></textarea>
+        </div>
+
+        <!-- Tombol -->
+        <div class="btn-area">
+            <button class="btn" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © LKPD Informatika – Aplikasi Perkantoran  
+        <br>Belajar Produktif di Era Digital
+    </div>
+
+</div>
+
+</body>
+</html>
