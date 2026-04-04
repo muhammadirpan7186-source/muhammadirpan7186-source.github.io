@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Minat & Ide - School Agripreneur Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 20px;
+            }
+            input[type="text"], textarea {
+                border-bottom: 1px solid #000 !important;
+                border-top: none !important;
+                border-left: none !important;
+                border-right: none !important;
+                border-radius: 0 !important;
+            }
+            .section-title {
+                background-color: #f3f4f6 !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 py-10 px-4 font-sans">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden container" id="printableArea">
+        <!-- Header -->
+        <div class="bg-emerald-600 p-6 text-white text-center">
+            <h1 class="text-2xl md:text-3xl font-bold uppercase tracking-wide">📄 Form Minat & Ide</h1>
+            <p class="text-emerald-100 mt-2 font-medium">PROGRAM SCHOOL AGRIPRENEUR CENTER (SAC)</p>
+        </div>
+
+        <form class="p-8 space-y-8">
+            
+            <!-- A. Identitas -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">A. Identitas Santri</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 border p-2 rounded-md form-input" placeholder="..........................................">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Kelas</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 border p-2 rounded-md form-input" placeholder="..........................................">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Asrama (jika ada)</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 border p-2 rounded-md form-input" placeholder="..........................................">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">No. HP (opsional)</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 border p-2 rounded-md form-input" placeholder="..........................................">
+                    </div>
+                </div>
+            </section>
+
+            <!-- B. Minat Bidang -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">B. Minat Bidang Kegiatan</h2>
+                <p class="text-sm text-gray-500 mb-3 italic">Pilih bidang yang paling kamu minati (boleh lebih dari satu):</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <label class="flex items-center space-x-3 p-2 border rounded hover:bg-emerald-50 transition">
+                        <input type="checkbox" class="h-5 w-5 text-emerald-600 border-gray-300 rounded">
+                        <span class="text-gray-700">Bertani (menanam sayur/tanaman)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 border rounded hover:bg-emerald-50 transition">
+                        <input type="checkbox" class="h-5 w-5 text-emerald-600 border-gray-300 rounded">
+                        <span class="text-gray-700">Beternak (lele/ayam/dll)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 border rounded hover:bg-emerald-50 transition">
+                        <input type="checkbox" class="h-5 w-5 text-emerald-600 border-gray-300 rounded">
+                        <span class="text-gray-700">Pengolahan produk (memasak/mengolah)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 border rounded hover:bg-emerald-50 transition">
+                        <input type="checkbox" class="h-5 w-5 text-emerald-600 border-gray-300 rounded">
+                        <span class="text-gray-700">Marketing (jualan/promosi)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 border rounded hover:bg-emerald-50 transition">
+                        <input type="checkbox" class="h-5 w-5 text-emerald-600 border-gray-300 rounded">
+                        <span class="text-gray-700">Desain & branding produk</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-2 border rounded hover:bg-emerald-50 transition">
+                        <input type="checkbox" class="h-5 w-5 text-emerald-600 border-gray-300 rounded">
+                        <span class="text-gray-700">Manajemen / keuangan usaha</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- C. Minat Utama -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">C. Minat Utama (WAJIB PILIH 1)</h2>
+                <div class="flex flex-wrap gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="minat_utama" class="h-4 w-4 text-emerald-600">
+                        <span>Bertani</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="minat_utama" class="h-4 w-4 text-emerald-600">
+                        <span>Beternak</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="minat_utama" class="h-4 w-4 text-emerald-600">
+                        <span>Jualan / Marketing</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="minat_utama" class="h-4 w-4 text-emerald-600">
+                        <span>Pengolahan produk</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="minat_utama" class="h-4 w-4 text-emerald-600">
+                        <span>Manajemen usaha</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- D. Pengalaman -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">D. Pengalaman Sebelumnya</h2>
+                <table class="w-full text-left border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border p-2">Kegiatan</th>
+                            <th class="border p-2 text-center">Pernah</th>
+                            <th class="border p-2 text-center">Tidak</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2">Menanam tanaman</td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp1"></td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp1"></td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Memelihara hewan</td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp2"></td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp2"></td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Berjualan</td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp3"></td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp3"></td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">Membuat produk makanan</td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp4"></td>
+                            <td class="border p-2 text-center"><input type="radio" name="exp4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Jika pernah, jelaskan pengalamanmu:</label>
+                    <textarea class="w-full border p-2 rounded-md border-gray-300 form-input" rows="2"></textarea>
+                </div>
+            </section>
+
+            <!-- E. Minat Skill -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">E. Minat Keterampilan (SKILL)</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <label class="flex items-center space-x-2"><input type="checkbox"> <span>Cara menanam yang benar</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox"> <span>Cara beternak yang baik</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox"> <span>Cara menghasilkan uang</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox"> <span>Cara menjual produk</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox"> <span>Cara membuat produk makanan</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox"> <span>Cara mengelola usaha</span></label>
+                </div>
+            </section>
+
+            <!-- F. Ide Usaha -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">F. Ide Usaha Santri (SANGAT PENTING)</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Menurut kamu, usaha apa yang bisa dilakukan di sekolah?</label>
+                        <input type="text" class="mt-1 block w-full border-b border-gray-300 p-2 focus:border-emerald-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Jika kamu diberi kesempatan, kamu ingin membuat usaha apa?</label>
+                        <input type="text" class="mt-1 block w-full border-b border-gray-300 p-2 focus:border-emerald-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Produk apa yang menurutmu mudah dijual di lingkungan sekolah?</label>
+                        <input type="text" class="mt-1 block w-full border-b border-gray-300 p-2 focus:border-emerald-500 outline-none">
+                    </div>
+                </div>
+            </section>
+
+            <!-- G. Analisis -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">G. Analisis Sederhana</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Siapa target pembeli produkmu?</label>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center space-x-2"><input type="checkbox"> <span>Santri</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox"> <span>Guru</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox"> <span>Masyarakat</span></label>
+                            <label class="flex items-center space-x-2 font-medium">Lainnya: <input type="text" class="border-b border-gray-300 ml-2 w-32 outline-none"></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Kenapa orang mau membeli produk tersebut?</label>
+                        <textarea class="mt-1 block w-full border p-2 rounded-md border-gray-300" rows="2"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- H. Minat Bergabung -->
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">H. Minat Bergabung</h2>
+                <div class="space-y-4">
+                    <div class="flex flex-wrap gap-4">
+                        <label class="flex items-center space-x-2"><input type="radio" name="interest"> <span>Sangat tertarik</span></label>
+                        <label class="flex items-center space-x-2"><input type="radio" name="interest"> <span>Tertarik</span></label>
+                        <label class="flex items-center space-x-2"><input type="radio" name="interest"> <span>Ragu-ragu</span></label>
+                        <label class="flex items-center space-x-2"><input type="radio" name="interest"> <span>Tidak tertarik</span></label>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-700 mb-2">Jika tertarik, kamu siap:</p>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center space-x-2"><input type="checkbox"> <span>Bekerja dalam tim</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox"> <span>Mengikuti kegiatan rutin</span></label>
+                            <label class="flex items-center space-x-2"><input type="checkbox"> <span>Bertanggung jawab</span></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- I & J & K -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <section>
+                    <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">I. Komitmen</h2>
+                    <p class="text-sm text-gray-600 mb-2">Saya siap mengikuti kegiatan SAC dengan sungguh-sungguh:</p>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center space-x-2"><input type="radio" name="commit"> <span>Ya</span></label>
+                        <label class="flex items-center space-x-2"><input type="radio" name="commit"> <span>Belum yakin</span></label>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">J. Potensi Diri</h2>
+                    <div class="space-y-2">
+                        <label class="block text-sm text-gray-700">Kelebihan yang kamu miliki:</label>
+                        <input type="text" class="w-full border-b border-gray-300 outline-none py-1">
+                        <label class="block text-sm text-gray-700 pt-2">Kekurangan yang ingin diperbaiki:</label>
+                        <input type="text" class="w-full border-b border-gray-300 outline-none py-1">
+                    </div>
+                </section>
+            </div>
+
+            <section>
+                <h2 class="text-lg font-bold text-emerald-700 border-b-2 border-emerald-100 pb-1 mb-4 section-title px-2 py-1 uppercase">K. Harapan Santri</h2>
+                <label class="block text-sm text-gray-700 mb-1">Apa harapan kamu terhadap program ini?</label>
+                <textarea class="w-full border p-2 rounded-md border-gray-300" rows="3"></textarea>
+            </section>
+
+            <!-- Footer for printing -->
+            <div class="hidden print:block mt-12">
+                <div class="flex justify-between">
+                    <div class="text-center">
+                        <p class="mb-16">Pembimbing,</p>
+                        <p>( ................................ )</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="mb-16">Santri,</p>
+                        <p>( ................................ )</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Action Button -->
+        <div class="p-6 bg-gray-100 text-center no-print border-t">
+            <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all flex items-center justify-center mx-auto space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                <span>CETAK KE PDF / PRINT</span>
+            </button>
+            <p class="text-xs text-gray-500 mt-4">Pastikan data terisi dengan lengkap sebelum mencetak.</p>
+        </div>
+    </div>
+
+</body>
+</html>
